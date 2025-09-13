@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10">
+    <nav aria-label="breadcrumb" class="bg-secondary p-2 rounded">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item">
+      <a href="" class="text-white">Expenses Summary</a>
+    </li>
+    <li class="breadcrumb-item active text-white" aria-current="page">
+        Summary
+    </li>
+  </ol>
+</nav>
+  </div>
+
+  <div class="col-md-2">
+    <a href="{% url 'expenses' %}" class="btn btn-primary">BACK</a>
+  </div>
+  <div class="col-md-12 mt-3">
+  <label for="chartType" class="form-label fw-bold">Select Chart Type:</label>
+  <select id="chartType" class="form-select w-auto">
+  <option value="doughnut" selected>Doughnut</option>
+  <option value="bar">Bar</option>
+  <option value="pie">Pie</option>
+  <option value="line">Line</option>
+  <option value="polarArea">Polar Area</option>
+  <option value="radar">Radar</option>
+</select>
+<div style="height: 420px; max-width: 800px; margin: 1rem auto;">
+  <canvas id="myChart"></canvas>
+</div>
+</div>
+  </div>
+
+</div>
+
+<script src="{% static 'js/stats.js' %}"></script>
+{% endblock content %}

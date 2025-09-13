@@ -1,0 +1,68 @@
+#header {
+    background: rgb(37, 1, 1);
+    color: #ffffff;
+}
+
+#branding h1 {
+    color: #eadbdb;
+    font-weight: 700;
+}
+
+div.breadcrumbs {
+    background: rgb(107, 17, 17);
+    color: #ffffff;
+}
+
+body {
+    background: rgb(4, 3, 3);
+}
+
+input[type=submit]{
+    background: rgb(83, 2, 2);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: var(--button-fg);
+    cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+}
+
+#toolbar form input[type="submit"]{
+    width: 20%;
+    margin-right: auto;
+
+}
+
+.login #content{
+    background: #ffffff;
+    color: black;
+}
+
+#id_password {
+    background: #ffffff;
+    color: black;
+}
+
+#id_username {
+    background: #ffffff;
+    color: black;
+}
+
+#footer {
+    background: #ffffff;
+    color: black;
+}
+
+input[type=text] {
+    color: black;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: rgb(107, 17, 17);
+    color: white;
+}
+
+a:link, a:visited {
+    color: rgb(255, 0, 0);
+}

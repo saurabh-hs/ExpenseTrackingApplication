@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10">
+    <nav aria-label="breadcrumb" class="bg-secondary p-2 rounded">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item">
+      <a href="" class="text-white">Income</a>
+    </li>
+    <li class="breadcrumb-item active text-white" aria-current="page">
+      My Income
+    </li>
+  </ol>
+</nav>
+  </div>
+
+  <div class="col-md-2">
+    <a href="{% url 'add-income' %}" class="btn btn-primary">Add Income</a>
+  </div>
+  </div>
+
+  <div class="container">
+    {% include 'partials/_messages.html'%}
+    {% if income.count %}
+
+    <div class="row">
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <input type="text" class="form-control mt-3 mb-3" id="searchField" placeholder="Search incomes...">
+        </div>
+      </div>
+    </div>
+
+    <div class="app-table">
+      <table class="table table-stripped table-hover">
+      <thead>
+        <tr>
+          <th>Amount ({{currency}})</th>
+          <th>Sources</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {% for income in page_obj %}
+        <tr>
+          <td>{{ income.amount }}</td>
+          <td>{{ income.source }}</td>
+          <td>{{ income.description }}</td>
+          <td>{{ income.date }}</td>
+          <td><a href="{% url 'edit-income' income.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>    
+
+    <div class="table-output">
+      <table class="table table-stripped table-hover">
+      <thead>
+        <tr>
+          <th>Amount ({{currency}})</th>
+          <th>Sources</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody class="table-body">
+
+      </tbody>
+    </table>
+    </div>
+
+    <div class="pagination-container">
+      <div class="mt-3">
+      Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </div>
+      <div class="d-flex justify-content-end">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+      <li class="page-item {% if page_obj.number == 1 %}active{% endif %}">
+        <a class="page-link" href="?page=1">&laquo; 1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      </li>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+          {{ page_obj.paginator.num_pages }} &raquo;
+        </a>
+      </li>
+        {% endif %}
+      </ul>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script src="{% static 'js/searchIncome.js' %}"></script>
+{% endblock content %}

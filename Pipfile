@@ -1,0 +1,15 @@
+[packages]
+django = "*"
+psycopg = "==3.2.9"
+psycopg2-binary = "*"
+validate-email = "*"
+six = "*"
+email-validator = "*"
+xlwt = "*"
+openpyxl = "*"
+weasyprint = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
